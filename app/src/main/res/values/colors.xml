@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryDark">#3766B4</color>
+    <color name="colorPrimary">#547AB9</color>
+    <color name="colorAccent">#2B2B2B</color>
+
+    <color name="third_white">#fff</color>
+    <color name="main_bg">#413B3A</color>
+    <color name="discount_icon_color">#E3B93A</color>
+    <color name="discount_value_color">#FF1200</color>
+</resources>

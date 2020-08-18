@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">PricecheckerApp</string>
+    <string name="enterbarcode">Enter Barcode</string>
+    <string name="welcom_in_hyperone">مرحبا بكم فى هايبروان</string>
+    <string name="txt_special_discount">خصم خاص</string>
+    <string name="txt_instanse_of">بدلا من</string>
+    <string name="offer_from">عرض من</string>
+    <string name="offer_to">الى</string>
+    <string name="how_much_day_remind">4</string>
+    <string name="remind">باقى</string>
+    <string name="day">يوم</string>
+    <string name="enterbranch">Enter Branch</string>
+</resources>

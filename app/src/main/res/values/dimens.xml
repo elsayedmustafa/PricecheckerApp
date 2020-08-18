@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="font_size_for_text_of_app">30sp</dimen>
+    <dimen name="font_size_for_large_text_of_app">70sp</dimen>
+    <dimen name="font_size_for_text_of_offer_date">30sp</dimen>
+</resources>
