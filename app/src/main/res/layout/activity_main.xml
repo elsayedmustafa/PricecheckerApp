@@ -58,7 +58,8 @@
             android:id="@+id/img_before_work"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/logo_80"/>
+            android:src="@drawable/logo_80"
+           />
      </LinearLayout>
         <LinearLayout
             android:id="@+id/linear_for_ip"

@@ -157,7 +157,11 @@ Button btn_ipaddress;
 
                     linear_before_work.setVisibility(View.GONE);
                     linear_details.setVisibility(View.VISIBLE);
-                    GetDetialsForBarcod();
+                    try {
+                        GetDetialsForBarcod();
+                    }catch (Exception e){
+                        Log.e("error-->",""+e);
+                    }
                     cdtTimer.cancel();
                     cdtTimer.start();
 
@@ -346,6 +350,7 @@ Button btn_ipaddress;
                                         Log.e("onResponse", "responseDepart" + editbarcode);
 
                                         String discounttype = object.getString("discounttype");
+                                        String discountV =  object.getString("discountV");
 
                                         String date_from = object.getString("date_from");
                                         String date_to = object.getString("date_to");
@@ -359,13 +364,15 @@ Button btn_ipaddress;
                                             Date dateToday = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
                                             Date dateTo = simpleDateFormat.parse(date_to.substring(0, date_to.length() - 3));
 
-                                            if (dateTo.after(dateToday) && discounttype.equalsIgnoreCase("3")
-                                                    || discounttype.equalsIgnoreCase("101")) {
+                                            if (dateTo.after(dateToday) && !discountV.equalsIgnoreCase("0")) {
                                                 linear_for_offer.setVisibility(View.VISIBLE);
                                                 txt_offer_how_much_day_remind.setText(printDifference(dateToday, dateTo));
                                             } else {
                                                 linear_for_offer.setVisibility(View.GONE);
                                             }
+                                            Log.e("onResponse", "response" + dateTo);
+                                            Log.e("onResponse", "response" + dateToday);
+                                            Log.e("onResponse", "response" + dateTo.after(dateToday));
 
 
                                         } catch (ParseException e) {
@@ -375,7 +382,17 @@ Button btn_ipaddress;
                                             String netPrice = "0";
                                             String netPriceBeforeDicount = "0";
                                             Double Discountvalue = 0.0;
-                                            if (discounttype.equalsIgnoreCase("3")) {
+
+                                            Discountvalue = Double.valueOf(object.getString("discountV"));
+
+                                            netPrice = String.valueOf((Double.valueOf(object.getString("sell_price"))
+                                                    - Double.valueOf(Discountvalue))
+                                                    * (1 + (Double.valueOf(object.getString("vatrate")) / 100)));
+
+                                            netPriceBeforeDicount = String.valueOf(Double.valueOf(object.getString("sell_price"))
+                                                    * (1 + (Double.valueOf(object.getString("vatrate")) / 100)));
+
+                                            /*if (discounttype.equalsIgnoreCase("3")) {
                                                 Discountvalue = Double.valueOf(object.getString("discountV"));
 
                                                 netPrice = String.valueOf((Double.valueOf(object.getString("sell_price"))
@@ -400,7 +417,7 @@ Button btn_ipaddress;
                                                         * (1 + (Double.valueOf(object.getString("vatrate")) / 100)));
                                                 netPriceBeforeDicount = String.valueOf(Double.valueOf(object.getString("sell_price"))
                                                         * (1 + (Double.valueOf(object.getString("vatrate")) / 100)));
-                                            }
+                                            }*/
                                             Log.e("onResponse", "response" + netPrice.indexOf("."));
                                             Log.e("onResponse", "response" + netPrice);
 
@@ -415,7 +432,18 @@ Button btn_ipaddress;
                                             String netPrice = "0.0";
                                             String netPriceBeforeDicount = "0";
                                             Double Discountvalue = 0.0;
-                                            if (discounttype.equalsIgnoreCase("3")) {
+
+                                            Discountvalue = Double.valueOf(object.getString("discountV"));
+
+                                            netPrice = String.valueOf((Double.valueOf(object.getString("sell_price"))
+                                                    - Double.valueOf(Discountvalue))
+                                                    * (1 + (Double.valueOf(object.getString("vatrate")) / 100)));
+
+                                            netPriceBeforeDicount = String.valueOf(Double.valueOf(object.getString("sell_price"))
+                                                    * (1 + (Double.valueOf(object.getString("vatrate")) / 100)));
+
+
+                                           /* if (discounttype.equalsIgnoreCase("3")) {
 
                                                 Discountvalue = Double.valueOf(object.getString("discountV"));
 
@@ -442,7 +470,7 @@ Button btn_ipaddress;
                                                 netPriceBeforeDicount = String.valueOf((Double.valueOf(object.getString("sell_price"))
                                                         - Discountvalue)
                                                         * (1 + (Double.valueOf(object.getString("vatrate")) / 100)));
-                                            }
+                                            }*/
 
                                             Log.e("onResponse", "response" + netPrice.indexOf("."));
                                             Log.e("onResponse", "response" + netPrice);
